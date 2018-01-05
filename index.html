@@ -1,0 +1,195 @@
+<html>
+<head>
+	
+	<title>HTML5 Layout</title>
+	
+	<link rel="stylesheet" href="shelve.css" type="text/css" />
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="data/pbook.js"></script>
+  <script src="data/crafsci.js"></script>
+ 
+</head>
+
+<body>
+
+
+<div class="box">
+<span class="glyphicon glyphicon-book"></span>   
+  <b>SMNG library</b>
+  
+</div> 
+
+<div class="container">
+
+<div class="dropdown" id="btn" >
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Book Type
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li ><a href="#"  onClick="myfunction(this.id)" id="Picture Book">PICTURE BOOKS</a></li>
+    <li><a href="#" onClick="myfunction(this.id)" id="Craft/Science">CRAFT/SCIENCE</a></li>
+    <li><a href="#">COMICS</a></li>
+  </ul>
+</div>
+<p id="booktext" style="color: #666666; font-weight:bold">Picture Books
+</p>
+
+
+    <div class="row" id="mybook">
+    <script>
+
+//alert ("here");
+//var obj = JSON.parse(picbook);
+alert ("here");
+function myfunction(a){
+alert(a);
+ 
+    document.getElementById("booktext").innerHTML = "You selected: " + a;
+	
+var obj=crafsci;
+var parent = document.getElementById('mybook');
+while( parent.hasChildNodes() ){
+    parent.removeChild(parent.lastChild);
+}
+//var parent=document.getElementById("mybook");
+// parent.removeChild(parent.childNodes[0]);
+
+for (i = 0; i < obj.book.length; i++) {
+   // alert(obj.book[i].title);
+  
+var para = document.createElement("div");
+para.setAttribute("class","col-xs-4 col-md-2");
+para.setAttribute("id","picframe");
+
+var imgphoto=document.createElement("img");
+
+imgphoto.setAttribute("src","photo/"+obj.book[i].UPC+".jpg");
+
+imgphoto.setAttribute("class","img-responsive book");
+imgphoto.setAttribute("id","overlay");
+
+
+var tx=document.createElement("div");
+tx.setAttribute("class","text");
+
+
+var txnode=document.createTextNode(obj.book[i].Class);
+tx.appendChild(txnode);
+
+
+var newbook=document.createElement("span");
+if(obj.book[i].New=="Y")
+{
+newbook.setAttribute("class","glyphicon glyphicon-star");
+newbook.setAttribute("style","color:yellow; font-weight:bold;");
+var newbooktx=document.createTextNode("NEW");
+newbook.appendChild(newbooktx);
+}
+
+
+var node = document.createTextNode(obj.book[i].Title);
+
+para.appendChild(node);
+para.appendChild(imgphoto);
+
+para.appendChild(tx);
+para.appendChild(newbook);
+parent.appendChild(para);
+
+if(i==2|i==8|i==14|i==20|i==26|i==32|i==38|i==44|i==50|i==56|i==62|i==68|i==74|i==80|i==86|i==92|i==98|i==104|i==110|i==116|i==122|i==128|i==134|i==140)
+{
+var shel=document.createElement("div");
+shel.setAttribute("class","col-xs-12 shelf hidden-md hidden-lg");
+parent.appendChild(shel);
+
+}
+if(i==5|i==11|i==17|i==23|i==29|i==35|i==41|i==47|i==53|i==59|i==65|i==71|i==77|i==83|i==89|i==95|i==101|i==107|i==113|i==119|i==125|i==131|i==137)
+{var shel=document.createElement("div");
+shel.setAttribute("class","col-xs-12 shelf");
+parent.appendChild(shel);
+}
+
+}
+var shel=document.createElement("div");
+shel.setAttribute("class","col-xs-12 shelf");
+parent.appendChild(shel);
+
+
+
+}
+var obj=picbooks;
+var parent=document.getElementById("mybook");
+
+for (i = 0; i < obj.book.length; i++) {
+   // alert(obj.book[i].title);
+  
+var para = document.createElement("div");
+para.setAttribute("class","col-xs-4 col-md-2");
+para.setAttribute("id","picframe");
+
+var imgphoto=document.createElement("img");
+
+imgphoto.setAttribute("src","photo/"+obj.book[i].UPC+".jpg");
+
+imgphoto.setAttribute("class","img-responsive book");
+imgphoto.setAttribute("id","overlay");
+
+
+var tx=document.createElement("div");
+tx.setAttribute("class","text");
+
+
+var txnode=document.createTextNode(obj.book[i].Class);
+tx.appendChild(txnode);
+
+
+var newbook=document.createElement("span");
+if(obj.book[i].New=="Y")
+{
+newbook.setAttribute("class","glyphicon glyphicon-star");
+newbook.setAttribute("style","color:yellow; font-weight:bold;");
+var newbooktx=document.createTextNode("NEW");
+newbook.appendChild(newbooktx);
+}
+
+
+var node = document.createTextNode(obj.book[i].Title);
+
+para.appendChild(node);
+para.appendChild(imgphoto);
+
+para.appendChild(tx);
+para.appendChild(newbook);
+parent.appendChild(para);
+
+if(i==2|i==8|i==14|i==20|i==26|i==32|i==38|i==44|i==50|i==56|i==62|i==68|i==74|i==80|i==86|i==92|i==98|i==104|i==110|i==116|i==122|i==128|i==134|i==140)
+{
+var shel=document.createElement("div");
+shel.setAttribute("class","col-xs-12 shelf hidden-md hidden-lg");
+parent.appendChild(shel);
+
+}
+if(i==5|i==11|i==17|i==23|i==29|i==35|i==41|i==47|i==53|i==59|i==65|i==71|i==77|i==83|i==89|i==95|i==101|i==107|i==113|i==119|i==125|i==131|i==137)
+{var shel=document.createElement("div");
+shel.setAttribute("class","col-xs-12 shelf");
+parent.appendChild(shel);
+}
+
+}
+var shel=document.createElement("div");
+shel.setAttribute("class","col-xs-12 shelf");
+parent.appendChild(shel);
+
+
+
+
+</script>
+
+</div>
+</div>
+</div>
+</body>
+</html>
